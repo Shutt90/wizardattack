@@ -6,41 +6,34 @@ class MyGame extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image(
-      "attack1001",
-      "./src/assets/Sprites/attack1anim/Attack1001.png"
-    );
-    this.load.image(
-      "attack1002",
-      "./src/assets/Sprites/attack1anim/Attack1002.png"
-    );
-    this.load.image(
-      "attack1003",
-      "./src/assets/Sprites/attack1anim/Attack1003.png"
-    );
-    this.load.image(
-      "attack1004",
-      "./src/assets/Sprites/attack1anim/Attack1004.png"
-    );
-    this.load.image(
-      "attack1005",
-      "./src/assets/Sprites/attack1anim/Attack1005.png"
-    );
-    this.load.image(
-      "attack1006",
-      "./src/assets/Sprites/attack1anim/Attack1006.png"
-    );
-    this.load.image(
-      "attack1007",
-      "./src/assets/Sprites/attack1anim/Attack1007.png"
-    );
-    this.load.image(
-      "attack1008",
-      "./src/assets/Sprites/attack1anim/Attack1008.png"
-    );
-  }
+
+    for(i=1; i>=8; i++) {
+      this.load.image(this.load.image(
+        `attack100${i}`,
+        `./src/assets/Sprites/attack1anim/Attack100${i}.png`
+      )
+    )};
+  };
 
   create() {
+
+    const loopAnims = fuction(anim) {
+      for (i=1; i>=8; i++) {
+        return this.attack`${Anim}` = `key: attack100${i}`
+      },
+    ],
+    frameRate: 12,
+    repeat: 1,
+  
+      this.anims.create({
+      key: attack1,
+      frames: [
+        {
+          loopAnims()
+        }
+      ]  
+      )
+    )};
     this.anims.create({
       key: "attack1",
       frames: [
@@ -58,14 +51,16 @@ class MyGame extends Phaser.Scene {
       frameRate: 12,
       repeat: 1,
     });
+  };
 
+
+
+  update() {
     this.animatedSpace = this.add
-      .sprite(400, 300, "attack1001")
-      .play("attack1");
-  }
-
-  update() {}
-}
+    .sprite(400, 300, "attack1001")
+    .play("attack1");
+  };
+};
 
 const config = {
   type: Phaser.AUTO,
