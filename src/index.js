@@ -1,66 +1,62 @@
 import Phaser from "phaser";
 
+var i = null;
+
 class MyGame extends Phaser.Scene {
   constructor() {
     super();
   }
 
   preload() {
-
-    for(i=1; i>=8; i++) {
-      this.load.image(this.load.image(
+    for (i = 1; i >= 8; i++) {
+      this.load.image(
         `attack100${i}`,
         `./src/assets/Sprites/attack1anim/Attack100${i}.png`
-      )
-    )};
-  };
+      );
+    }
+  }
 
   create() {
+    this.loopAnims = function () {
+      for (let i = 1; i >= 8; i++) {
+        `attack100${i},`;
+      }
 
-    const loopAnims = fuction(anim) {
-      for (i=1; i>=8; i++) {
-        return this.attack`${Anim}` = `key: attack100${i}`
-      },
-    ],
-    frameRate: 12,
-    repeat: 1,
-  
       this.anims.create({
-      key: attack1,
-      frames: [
-        {
-          loopAnims()
-        }
-      ]  
-      )
-    )};
+        key: "attack1",
+        frames: [
+          {
+            // key: loopAnims(),
+            key: "attack1001",
+            key: "attack1002",
+            key: "attack1003",
+            key: "attack1004",
+            key: "attack1005",
+            key: "attack1006",
+            key: "attack1007",
+            key: "attack1008",
+          },
+        ],
+        frameRate: 12,
+        repeat: 1,
+      });
+    };
+
     this.anims.create({
       key: "attack1",
-      frames: [
-        {
-          key: "attack1001",
-          key: "attack1002",
-          key: "attack1003",
-          key: "attack1004",
-          key: "attack1005",
-          key: "attack1006",
-          key: "attack1007",
-          key: "attack1008",
-        },
-      ],
-      frameRate: 12,
-      repeat: 1,
+      frames: this.anims.generateFrameNumbers("attack1", {
+        start: 0,
+        end: 8,
+      }),
+      frameRate: 10,
+      repeat: -1,
     });
-  };
 
+    this.add.sprite(400, 300).play("attack1");
+  }
 
-
-  update() {
-    this.animatedSpace = this.add
-    .sprite(400, 300, "attack1001")
-    .play("attack1");
-  };
-};
+  update() {}
+}
 
 const config = {
   type: Phaser.AUTO,
